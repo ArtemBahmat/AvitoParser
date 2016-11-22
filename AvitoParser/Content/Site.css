@@ -1,0 +1,74 @@
+﻿
+.td_main_t {
+    padding-top: 1px;
+    padding-left: 20px;
+    padding-right: 20px;
+    vertical-align:central;
+
+}
+
+
+.urls {
+    font-weight:bold;
+}
+
+.url {
+    vertical-align:bottom;
+    font-family:'Times New Roman', Times, serif;
+}
+
+body {
+    padding-bottom: 20px;
+    background-color: #ced1d4;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 700px;
+}
+
+
+
+.ui-jqgrid tr.ui-row-ltr td {
+    font-size: 1em;
+}
+
+.mynavbar {
+    padding-left: 90px;
+    background-color: #808080;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+A:link {
+    color: #4e423a;
+}
+
+A:visited {
+    color: #4e423a;
+}
+
+A:hover {
+    color: #fc1919; 
+}
+
+.tabs {
+    font-family:'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+

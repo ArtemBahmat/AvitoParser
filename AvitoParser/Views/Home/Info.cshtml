@@ -1,0 +1,92 @@
+﻿@model string
+
+<br>
+
+@if (Model.StartsWith("ERROR."))
+{
+    <h2>@Model</h2>
+}
+else
+{
+    <a href="@Model"><h3>@Model</h3></a>
+
+    
+    <table id="jqg"></table>
+
+    <script type="text/javascript">
+        $(document).ready(
+            function loadDataGrid() {
+                $("#jqg").jqGrid({
+                    url: '@Url.Action("GetData")',
+                    datatype: "json",
+                    mtype: 'POST',
+                    height: 450,
+                    sortable: true,
+                    sortname: "Id",
+                    sortorder: "asc",
+                    colNames: ['Id', '№', 'ЗП', 'Опыт (лет)', 'Возраст', 'Адрес', 'Образование', 'Должность', 'Пол',
+                               'Сфера деятельн-ти', 'График работы', 'Дата создания', 'Гражд-во', 'Коммандировки', 'Переезд',
+                               'Описание', 'Url'],
+                    colModel: [
+                    { name: 'Id', index: 'Id', width: 50, stype: 'text', align: "center", sorttype: 'number', hidden: true },
+                    { name: 'AvitoId', index: 'AvitoId', width: 90, align: "center", sorttype: 'number', sortable: true },
+                    { name: 'Salary', index: 'Salary', width: 100, align: "center", sorttype: 'number', sortable: true, formatter: SalaryFormatter },
+                    { name: 'Experience', index: 'Experience', width: 70, align: "center", sorttype: 'number', sortable: true, formatter: ExperienceFormatter },
+                    { name: 'Age', index: 'Age', align: "center", width: 80, align: "center", sorttype: 'number', sortable: true, formatter: AgeFormatter },
+                    { name: 'Address', index: 'Address', width: 250, sortable: false },
+                    { name: 'Education', index: 'Education', width: 150, sortable: false },
+                    { name: 'Position', index: 'Position', width: 350, sortable: false },
+                    { name: 'Sex', index: 'Sex', align: "center", width: 80, sortable: false },
+                    { name: 'ActionSphere', index: 'ActionSphere', align: "center", width: 150, sortable: false },
+                    { name: 'WorkingSchedule', index: 'WorkingSchedule', align: "center", width: 110, sortable: false },
+                    { name: 'CreatingDate', index: 'CreatingDate', width: 110, formatter: 'date', align: "center", formatoptions: { newformat: 'd/m/Y' }, type: 'date', sortable: true },
+                    { name: 'Citizenship', index: 'Citizenship', align: "center", width: 90, sortable: false },
+                    { name: 'BusinessTripReady', index: 'BusinessTripReady', align: "center", width: 110, sortable: false },
+                    { name: 'RemovalReady', index: 'RemovalReady', width: 70, align: "center", sorttype: 'number', sortable: true, formatter: RemovalReadyFormatter },
+                    { name: 'Description', index: 'Description', width: 450, sortable: false },
+                    { name: 'Url', index: 'Url', width: 700, sortable: false }
+                    ],
+                    rowNum: 200,
+                    shrinkToFit: false,
+                    loadonce: false,
+                    caption: "Список резюме",
+                    autowidth: true,
+                    rownumbers: true,
+
+                    error: function () {
+                        alert("Error loading data! Please try again.");
+                    }
+                });
+                function RemovalReadyFormatter(cellvalue, options) {
+                    if (cellvalue == true) {
+                        return 'готов';
+                    }
+                    else
+                        return 'не готов';
+                };
+                function AgeFormatter(cellvalue, options) {
+                    if (cellvalue == 0) {
+                        return '-';
+                    }
+                    else
+                        return cellvalue;
+                };
+                function ExperienceFormatter(cellvalue, options) {
+                    if (cellvalue == 0) {
+                        return '-';
+                    }
+                    else
+                        return cellvalue;
+                };
+                function SalaryFormatter(cellvalue, options) {
+                    if (cellvalue == 0) {
+                        return '-';
+                    }
+                    else
+                        return cellvalue + " руб";
+                }
+            });
+    </script>
+
+
+}

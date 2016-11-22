@@ -1,0 +1,26 @@
+﻿
+
+
+
+<br>
+<br>
+<form method="post" action="" name="form">
+    <div>
+        <h3>Enter the url of Avito-resumes page</h3><br>
+        <div class="ui-widget">
+            <label for="input">Your url: </label>
+            <input placeholder="https://www.avito.ru/region/rezume/chapter/..." size="1000" name="url" type="url" ng-model="initialwebsite" required />
+            <input type="submit" value="Submit"/>
+        </div>
+    </div>
+</form>
+
+
+
+<script src="~/Scripts/angular.min.js"></script>
+<script>
+    function x($scope) {
+        $scope.initialwebsite = "https://www.avito.ru/region/rezume/chapter/";
+    }
+</script>
+
